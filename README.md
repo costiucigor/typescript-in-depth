@@ -1,56 +1,24 @@
 # typescriptindepth
+Difference between slots and scoped slots:
+In Vue.js, slots are used to create reusable components with customizable content while scoped slots are a variation of slots that allow the parent component to access the child component's data and methods. Slots are placeholders for content that can be passed down to child components as props. Scoped slots are used when the child component needs to pass data or functionality to the parent component.
 
-Explain the difference between slots and scoped slots.
+Vue.js reactivity and common issues:
+Vue.js reactivity is the ability of Vue.js to track changes to the state of the application and update the view accordingly. Vue.js uses a virtual DOM to track changes to the application state. Common issues when tracking changes include not updating the state correctly, not using computed properties and watchers correctly, and not using Vue's built-in reactivity system correctly.
 
-View answer
+Mixins benefits and drawbacks:
+Mixins in Vue.js are a way to share code between components. Benefits include reducing code duplication, improving code organization, and allowing for easier code maintenance. Drawbacks include potential conflicts with other mixins or component options and the potential for code to become more difficult to understand and maintain.
 
+Single-file component:
+A single-file component is a file in Vue.js that contains all the necessary components for a single view. It includes HTML, CSS, and JavaScript in a single file. This makes it easier to organize code and maintain a consistent structure across the application.
 
-2.
-Explain Vue.js reactivity and common issues when tracking changes.
+Data flow between components in Vue.js:
+In Vue.js, data flows from parent components to child components via props and from child components to parent components via events. This allows components to communicate with each other and share data.
 
-View answer
+Memory leaks in Vue.js apps and solutions:
+Common causes of memory leaks in Vue.js apps include not cleaning up event listeners, not removing components from the DOM correctly, and not properly destroying components. Solutions include using Vue's built-in lifecycle hooks to clean up resources, using v-if to conditionally render components, and using the $destroy method to remove components from the DOM.
 
-
-
-3.
-What are mixins? Describe their benefits and drawbacks.
-
-View answer
-
-
-
-
-
-
-Apply to Join Toptal's Development Network
-
-and enjoy reliable, steady, remote Freelance Vue.js Developer Jobs
-
-4.
-What is a single-file component?
-
-View answer
-
-
-5.
-Describe data flow between components in a Vue.js app.
-
-View answer
-
-
-
-6.
-List the most common cause of memory leaks in Vue.js apps and how they can be solved.
-
-View answer
-
-
-
-
-7.
-What is the virtual DOM and how is it beneficial?
-
-View answer
+Virtual DOM and its benefits:
+The virtual DOM is a technique used by Vue.js to optimize the rendering of components. It is a lightweight representation of the actual DOM that is used to track changes to the application state. When changes are made to the state, the virtual DOM is updated and compared to the actual DOM to determine what needs to be updated. This improves performance and reduces the number of updates that need to be made to the actual DOM.
 
 
 
