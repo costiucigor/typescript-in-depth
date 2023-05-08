@@ -120,3 +120,15 @@ View answer
 
 10.
 Why would you choose Vue.js over other front-end frameworks?
+
+There are several reasons why you might choose Vue.js over other front-end frameworks such as React or Angular:
+
+Simplicity: Vue.js is designed to be easy to understand and use, with a minimal API and a clear and concise syntax. This makes it a good choice for developers who are new to front-end frameworks, or who prefer a simpler and more lightweight approach.
+
+Flexibility: Vue.js can be used for a wide range of applications, from simple single-page apps to more complex enterprise-level applications. It can also be integrated with other libraries and frameworks, making it a versatile choice for developers.
+
+Performance: Vue.js is designed to be fast and lightweight, with a small footprint and efficient rendering. This makes it a good choice for applications that need to be responsive and performant, especially on mobile devices.
+
+Community: Vue.js has a large and active community of developers, which means there are many resources available for learning and troubleshooting. This also means that there are many plugins and extensions available to extend the functionality of Vue.js.
+
+Ecosystem: Vue.js has a growing ecosystem of tools and libraries, including Vuex for state management, Vue Router for routing, and Vue CLI for scaffolding and building applications. This makes it easy to get up and running quickly, and to build scalable and maintainable applications.
