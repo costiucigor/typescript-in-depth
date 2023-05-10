@@ -131,4 +131,4 @@ Performance: Vue.js is designed to be fast and lightweight, with a small footpri
 
 Community: Vue.js has a large and active community of developers, which means there are many resources available for learning and troubleshooting. This also means that there are many plugins and extensions available to extend the functionality of Vue.js.
 
-Ecosystem: Vue.js has a growing ecosystem of tools and libraries, including Vuex for state management, Vue Router for routing, and Vue CLI for scaffolding and building applications. This makes it easy to get up and running quickly, and to build scalable and maintainable applications.
+Ecosystem: Vue.js has a growing ecosystem of tools and libraries, including Vuex for state management, Vue Router for routing, and Vue CLI for scaffolding and building applications. This makes it easy to get up and running quickly, and to build scalable and maintainable applications
