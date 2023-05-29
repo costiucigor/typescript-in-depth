@@ -2,7 +2,6 @@
 import {ref, computed, onMounted} from "vue";
 import { useRoute } from "vue-router";
 import store from "../store";
-import { de } from "vuetify/locale";
 import router from "../router";
 
 const rules = [value => value.length <= 200 || 'Max 200 characters'];
@@ -23,7 +22,16 @@ const addTag = () => {
 const tagEntries = computed(() => Object.entries(tags.value));
 
 const submitHandler = () => {
-}
+  if (task.value && task.value.id && task.value.description && task.value.date) {
+    store.dispatch("updateTask", {
+      id: task.value.id,
+      description: task.value.description,
+      date: task.value.date
+    }).then(() => {
+      router.push("/list");
+    });
+  }
+};
 
 onMounted(() => {
   if (task.value) {
@@ -52,14 +60,14 @@ const task = computed(() => store.getters.taskById(taskId));
           </v-row>
           <v-row>
             <v-col cols="12" sm="6">
-              <v-text-field v-model="title" label="Title" required></v-text-field>
+              <v-chip v-for="(tag, key) in tags" :key="tag" label outlined class="ma-2" closable required>
+                {{ tag.description }}
+              </v-chip>
             </v-col>
           </v-row>
           <v-row>
             <v-col cols="12" sm="6">
-              <v-chip v-for="(tag, key) in tags" :key="tag" label outlined class="ma-2" closable required>
-                {{ tag.description }}
-              </v-chip>
+              <v-text-field v-model="newTag" label="Add Tag" @keyup.space="addTag"></v-text-field>
             </v-col>
           </v-row>
           <v-row>
@@ -85,9 +93,12 @@ const task = computed(() => store.getters.taskById(taskId));
               ></v-text-field>
             </v-col>
           </v-row>
-          <v-btn class="btn" type="submit">
-            Create Task
-          </v-btn>
+            <v-btn class="btn" type="submit">
+              Update
+            </v-btn>
+            <v-btn class="btn ml-16 bg-blue" type="submit">
+              Complete task
+            </v-btn>
         </v-container>
       </v-form>
     </div>
