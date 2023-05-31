@@ -7,7 +7,7 @@ import { RouterLink } from 'vue-router'
   <nav class="navbar">
     <div class="nav-wrapper">
       <RouterLink to="/" class="brand-logo">Tasks</RouterLink>
-      <ul id="nav-mobile" class="nav">
+      <ul class="nav">
         <li>
           <RouterLink to="/create" exact activeClass="active" class="nav-link">
             Create
@@ -25,7 +25,8 @@ import { RouterLink } from 'vue-router'
 
 <style scoped>
 .navbar {
-  background: cornflowerblue;
+  background: green;
+  -webkit-box-shadow: gray 5px 10px 5px ;
   color: #fafafa;
   font-family: "Franklin Gothic Book";
   height: 60px;
@@ -34,14 +35,21 @@ import { RouterLink } from 'vue-router'
 }
 
 .nav-wrapper {
-  padding: 0 2rem;
+  padding: 0 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav {
+  margin-left: 280px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 .brand-logo {
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: bold;
   text-decoration: none;
   color: #fafafa;

@@ -18,5 +18,6 @@ components: {
 <style>
 * {
   margin: 0;
+  text-decoration: none;
 }
 </style>
