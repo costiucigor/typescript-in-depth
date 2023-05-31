@@ -8,9 +8,7 @@ const tasks = computed(() => store.getters.tasks)
 <template>
   <div>
     <h1>List</h1>
-
     <hr>
-
     <v-table v-if="tasks.length">
       <thead>
       <tr>
