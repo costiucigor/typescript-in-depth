@@ -18,6 +18,9 @@ components: {
 <style>
 * {
   margin: 0;
+}
+
+li, a {
   text-decoration: none;
 }
 </style>

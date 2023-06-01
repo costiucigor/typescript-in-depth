@@ -48,10 +48,16 @@ import { RouterLink } from 'vue-router'
   justify-content: space-between;
 }
 
+.navbar .nav-wrapper .nav .nav-link {
+  margin-left: 1rem;
+  text-decoration: none;
+  color: #fafafa;
+}
+
 .brand-logo {
   font-size: 2rem;
   font-weight: bold;
-  text-decoration: none;
+  text-decoration: none !important;
   color: #fafafa;
 }
 
