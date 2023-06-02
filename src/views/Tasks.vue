@@ -10,6 +10,10 @@ const date = ref("");
 const tags = ref<{ [key: number]: { id: number; description: string } }>({});
 const newTag = ref('');
 
+const route = useRoute();
+const taskId = Number(route.params.id);
+const task = computed(() => store.getters.taskById(taskId));
+
 const addTag = () => {
   const trimmedTag = newTag.value.trim();
   if (trimmedTag) {
@@ -33,6 +37,11 @@ const submitHandler = () => {
   }
 };
 
+const truncatedDescription = computed(() => {
+  const description = task.value?.description || "";
+  return description.length > 50 ? description.slice(0, 50) + "..." : description;
+});
+
 onMounted(() => {
   if (task.value) {
     tags.value = task.value.tags;
@@ -40,27 +49,23 @@ onMounted(() => {
     date.value = task.value.date;
   }
 })
-
-const route = useRoute();
-const taskId = Number(route.params.id);
-const task = computed(() => store.getters.taskById(taskId));
 </script>
 
 <template>
-  <v-contaier fluid>
-    <v-row align="center" justify="center" v-if="task">
-      <v-col>
-        <v-form @submit.prevent="submitHandler">
+  <v-container fluid>
+    <v-row align="center" justify="center">
+      <v-col cols="12" sm="6">
+        <v-form @submit.prevent="submitHandler" v-if="task">
           <v-container>
             <v-row>
-              <v-col cols="12" sm="6">
+              <v-col cols="12" sm="6" class="text-center">
                 <p>{{ task.title }}</p>
-                <p>{{ task.description }}</p>
+                <p>{{ truncatedDescription }}</p>
               </v-col>
             </v-row>
             <v-row>
               <v-col cols="12" sm="6">
-                <v-chip v-for="(tag, key) in tags" :key="tag" label outlined class="ma-2" closable required>
+                <v-chip v-for="(tag, key) in tagEntries" :key="key" label outlined class="ma-2" closable required>
                   {{ tag.description }}
                 </v-chip>
               </v-col>
@@ -93,16 +98,24 @@ const task = computed(() => store.getters.taskById(taskId));
                 ></v-text-field>
               </v-col>
             </v-row>
-            <v-btn class="btn" type="submit">
-              Update
-            </v-btn>
-            <v-btn class="btn ml-16 bg-blue" type="submit">
-              Complete task
-            </v-btn>
+            <v-row>
+              <v-col cols="12" sm="6" class="text-center">
+                <v-btn class="btn" type="submit">
+                  Update
+                </v-btn>
+                <v-btn class="btn ml-16 bg-blue" type="submit">
+                  Complete task
+                </v-btn>
+              </v-col>
+            </v-row>
           </v-container>
         </v-form>
+        <v-row align="center" justify="center" v-else>
+          <v-col cols="12" class="text-center">
+            <p>404 Task not found</p>
+          </v-col>
+        </v-row>
       </v-col>
     </v-row>
-    <p v-else>404 Task not found</p>
-  </v-contaier>
+  </v-container>
 </template>
