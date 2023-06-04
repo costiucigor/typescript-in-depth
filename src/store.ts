@@ -11,7 +11,7 @@ const store = createStore({
          localStorage.setItem("tasks", JSON.stringify(state.tasks))
      },
         updateTask(state, {id, description, date}) {
-            const tasks = state.tasks.concat()
+            const tasks = [...state.tasks];
 
             const idx = tasks.findIndex(t => t.id === id)
             const task = tasks[idx]
@@ -22,6 +22,11 @@ const store = createStore({
 
             state.tasks = tasks
             localStorage.setItem("tasks", JSON.stringify(state.tasks))
+        },
+        completeTask(state, id) {
+         const idx = state.tasks.findIndex(t => t.id === id)
+            state.tasks[idx].status = "completed"
+            localStorage.setItem("tasks", JSON.stringify(state.tasks))
         }
     },
     actions: {
@@ -30,6 +35,9 @@ const store = createStore({
         },
         updateTask({commit}, task) {
             commit("updateTask", task)
+        },
+        completeTask({commit}, id) {
+            commit("completeTask", id)
         }
     },
     getters: {

@@ -25,17 +25,22 @@ const addTag = () => {
 
 const tagEntries = computed(() => Object.entries(tags.value));
 
-const submitHandler = () => {
+const updateTask = () => {
   if (task.value && task.value.id && task.value.description && task.value.date) {
     store.dispatch("updateTask", {
       id: task.value.id,
       description: task.value.description,
       date: task.value.date
     }).then(() => {
-      router.push("/list");
+      router.push("list");
     });
   }
 };
+
+const completeTask = () => {
+  store.dispatch("completeTask", taskId)
+  router.push("list");
+}
 
 const truncatedDescription = computed(() => {
   const description = task.value?.description || "";
@@ -55,7 +60,7 @@ onMounted(() => {
   <v-container fluid>
     <v-row align="center" justify="center">
       <v-col cols="12" sm="6">
-        <v-form @submit.prevent="submitHandler" v-if="task">
+        <v-form v-if="task">
           <v-container>
             <v-row>
               <v-col cols="12" sm="6" class="text-center">
@@ -99,11 +104,11 @@ onMounted(() => {
               </v-col>
             </v-row>
             <v-row>
-              <v-col cols="12" sm="6" class="text-center">
-                <v-btn class="btn" type="submit">
+              <v-col cols="12" sm="6" class="text-center" v-if="task.status !== 'completed'">
+                <v-btn class="btn" @click="updateTask" type="submit">
                   Update
                 </v-btn>
-                <v-btn class="btn ml-16 bg-blue" type="submit">
+                <v-btn class="btn ml-16 bg-blue" @click="completeTask" type="submit">
                   Complete task
                 </v-btn>
               </v-col>

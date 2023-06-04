@@ -1,13 +1,27 @@
 <script setup lang="ts">
- import {computed} from "vue";
- import store from "../store";
+import { computed, ref } from "vue";
+import store from "../store";
 
-const tasks = computed(() => store.getters.tasks)
+const filterOptions = ['active', 'outdated', 'completed'];
+const filter = ref(null);
+
+const tasks = computed(() => store.getters.tasks);
+const displayTasks = computed(() => {
+  if (!filter.value) {
+    return tasks.value;
+  }
+  return tasks.value.filter((t) => t.status === filter.value);
+});
 </script>
 
 <template>
   <div>
     <h1>List</h1>
+    <v-select
+        label="Select"
+        :items="filterOptions"
+        v-model="filter"
+    ></v-select>
     <hr>
     <v-table v-if="tasks.length">
       <thead>
@@ -21,9 +35,9 @@ const tasks = computed(() => store.getters.tasks)
       </tr>
       </thead>
       <tbody>
-      <tr v-for="(task, idx) of tasks" :key="task.id">
-        <td>{{idx + 1}}</td>
-        <td>{{ task.title}}</td>
+      <tr v-for="(task, idx) of displayTasks" :key="task.id">
+        <td>{{ idx + 1 }}</td>
+        <td>{{ task.title }}</td>
         <td>{{ task.date }}</td>
         <td class="td"><div class="text">{{ task.description }}</div></td>
         <td>{{ task.status }}</td>
